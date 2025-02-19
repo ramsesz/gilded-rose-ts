@@ -11,10 +11,10 @@ export class Item {
 }
 
 export const ITEM_NAMES = {
-  AGED_BRIE: 'Aged Brie',
-  BACKSTAGE_PASSES: 'Backstage passes to a TAFKAL80ETC concert',
-  SULFURAS: 'Sulfuras, Hand of Ragnaros',
-}
+  AGED_BRIE: "Aged Brie",
+  BACKSTAGE_PASSES: "Backstage passes to a TAFKAL80ETC concert",
+  SULFURAS: "Sulfuras, Hand of Ragnaros",
+};
 
 export class GildedRose {
   items: Array<Item>;
@@ -24,27 +24,28 @@ export class GildedRose {
   }
 
   updateQuality() {
- 
-    this.items.forEach(item => {
-      if (item.name != ITEM_NAMES.AGED_BRIE && item.name != ITEM_NAMES.BACKSTAGE_PASSES) {
+    this.items.forEach((item) => {
+      if (
+        item.name != ITEM_NAMES.AGED_BRIE &&
+        item.name != ITEM_NAMES.BACKSTAGE_PASSES
+      ) {
         if (item.quality > 0) {
           if (item.name != ITEM_NAMES.SULFURAS) {
-            item.quality = item.quality - 1
+            item.quality = item.quality - 1;
           }
         }
-      }
-      else {
+      } else {
         if (item.quality < 50) {
-          item.quality = item.quality + 1
+          item.quality = item.quality + 1;
           if (item.name == ITEM_NAMES.BACKSTAGE_PASSES) {
             if (item.sellIn < 11) {
               if (item.quality < 50) {
-                item.quality = item.quality + 1
+                item.quality = item.quality + 1;
               }
             }
             if (item.sellIn < 6) {
               if (item.quality < 50) {
-                item.quality = item.quality + 1
+                item.quality = item.quality + 1;
               }
             }
           }
@@ -58,15 +59,15 @@ export class GildedRose {
           if (item.name != ITEM_NAMES.BACKSTAGE_PASSES) {
             if (item.quality > 0) {
               if (item.name != ITEM_NAMES.SULFURAS) {
-                item.quality = item.quality - 1
+                item.quality = item.quality - 1;
               }
             }
           } else {
-            item.quality = item.quality - item.quality
+            item.quality = item.quality - item.quality;
           }
         } else {
           if (item.quality < 50) {
-            item.quality = item.quality + 1
+            item.quality = item.quality + 1;
           }
         }
       }
