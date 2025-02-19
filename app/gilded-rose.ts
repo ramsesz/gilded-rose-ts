@@ -23,8 +23,84 @@ export class GildedRose {
     this.items = items;
   }
 
+  updateAgedBrie(item: Item) {
+    item.sellIn -= 1;
+    item.quality += 1;
+
+    if (item.sellIn < 0) {
+      item.quality += 1;
+    }
+    if (item.quality > 50) {
+      item.quality = 50;
+    }
+
+    return item;
+  }
+
+  updateBackstagePasses(item: Item) {
+    item.sellIn -= 1;
+
+    if (item.sellIn < 0) {
+      item.quality = 0;
+      return item;
+    }
+
+    item.quality += 1;
+
+    if (item.sellIn < 10) {
+      item.quality += 1;
+    }
+
+    if (item.sellIn < 5) {
+      item.quality += 1;
+    }
+
+    if (item.quality > 50) {
+      item.quality = 50;
+    }
+
+    return item;
+  }
+
+  updateSulfuras(item: Item) {
+    return item;
+  }
+
+  updateGeneralItem(item: Item) {
+    item.sellIn -= 1;
+    item.quality -= 1;
+
+    if (item.sellIn < 0) {
+      item.quality -= 1;
+    }
+
+    if (item.quality < 0) {
+      item.quality = 0;
+    }
+
+    return item;
+  }
+
   updateQuality() {
     this.items.forEach((item) => {
+      if (item.name === ITEM_NAMES.AGED_BRIE) {
+        this.updateAgedBrie(item);
+        return;
+      }
+
+      if (item.name === ITEM_NAMES.BACKSTAGE_PASSES) {
+        this.updateBackstagePasses(item);
+        return;
+      }
+
+      if (item.name === ITEM_NAMES.SULFURAS) {
+        this.updateSulfuras(item);
+        return;
+      }
+
+      this.updateGeneralItem(item);
+      return;
+
       if (
         item.name != ITEM_NAMES.AGED_BRIE &&
         item.name != ITEM_NAMES.BACKSTAGE_PASSES
