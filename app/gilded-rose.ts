@@ -10,6 +10,12 @@ export class Item {
   }
 }
 
+export const ITEM_NAMES = {
+  AGED_BRIE: 'Aged Brie',
+  BACKSTAGE_PASSES: 'Backstage passes to a TAFKAL80ETC concert',
+  SULFURAS: 'Sulfuras, Hand of Ragnaros',
+}
+
 export class GildedRose {
   items: Array<Item>;
 
@@ -18,11 +24,11 @@ export class GildedRose {
   }
 
   updateQuality() {
-
+ 
     this.items.forEach(item => {
-      if (item.name != 'Aged Brie' && item.name != 'Backstage passes to a TAFKAL80ETC concert') {
+      if (item.name != ITEM_NAMES.AGED_BRIE && item.name != ITEM_NAMES.BACKSTAGE_PASSES) {
         if (item.quality > 0) {
-          if (item.name != 'Sulfuras, Hand of Ragnaros') {
+          if (item.name != ITEM_NAMES.SULFURAS) {
             item.quality = item.quality - 1
           }
         }
@@ -30,7 +36,7 @@ export class GildedRose {
       else {
         if (item.quality < 50) {
           item.quality = item.quality + 1
-          if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
+          if (item.name == ITEM_NAMES.BACKSTAGE_PASSES) {
             if (item.sellIn < 11) {
               if (item.quality < 50) {
                 item.quality = item.quality + 1
@@ -44,14 +50,14 @@ export class GildedRose {
           }
         }
       }
-      if (item.name != 'Sulfuras, Hand of Ragnaros') {
+      if (item.name != ITEM_NAMES.SULFURAS) {
         item.sellIn = item.sellIn - 1;
       }
       if (item.sellIn < 0) {
-        if (item.name != 'Aged Brie') {
-          if (item.name != 'Backstage passes to a TAFKAL80ETC concert') {
+        if (item.name != ITEM_NAMES.AGED_BRIE) {
+          if (item.name != ITEM_NAMES.BACKSTAGE_PASSES) {
             if (item.quality > 0) {
-              if (item.name != 'Sulfuras, Hand of Ragnaros') {
+              if (item.name != ITEM_NAMES.SULFURAS) {
                 item.quality = item.quality - 1
               }
             }
