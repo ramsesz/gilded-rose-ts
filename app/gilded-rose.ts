@@ -83,23 +83,20 @@ export class GildedRose {
 
   updateQuality() {
     this.items.forEach((item) => {
-      if (item.name === ITEM_NAMES.AGED_BRIE) {
-        this.updateAgedBrie(item);
-        return;
+      switch (item.name) {
+        case ITEM_NAMES.AGED_BRIE:
+          this.updateAgedBrie(item);
+          return;
+        case ITEM_NAMES.BACKSTAGE_PASSES:
+          this.updateBackstagePasses(item);
+          return;
+        case ITEM_NAMES.SULFURAS:
+          this.updateSulfuras(item);
+          return;
+        default:
+          this.updateGeneralItem(item);
+          return;
       }
-
-      if (item.name === ITEM_NAMES.BACKSTAGE_PASSES) {
-        this.updateBackstagePasses(item);
-        return;
-      }
-
-      if (item.name === ITEM_NAMES.SULFURAS) {
-        this.updateSulfuras(item);
-        return;
-      }
-
-      this.updateGeneralItem(item);
-      return;
     });
 
     return this.items;
