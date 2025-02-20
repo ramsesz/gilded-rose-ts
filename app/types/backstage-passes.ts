@@ -1,12 +1,7 @@
 import { Item } from "@/gilded-rose";
+import { GeneralItem } from "@/types/general-item";
 
-export class BackstagePasses {
-  item: Item;
-
-  constructor(item: Item) {
-    this.item = item;
-  }
-
+export class BackstagePasses extends GeneralItem {
   update() {
     this.item.sellIn -= 1;
 
