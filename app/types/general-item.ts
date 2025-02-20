@@ -15,8 +15,19 @@ export class GeneralItem {
       this.item.quality -= 1;
     }
 
-    if (this.item.quality < 0) {
+    this.ensureQuality();
+
+    return this.item;
+  }
+
+  ensureQuality() {
+    if(this.item.quality < 0) {
       this.item.quality = 0;
+      return this.item
+    }
+
+    if(this.item.quality > 50) {
+      this.item.quality = 50;
     }
 
     return this.item;

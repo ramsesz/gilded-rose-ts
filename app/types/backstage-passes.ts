@@ -20,9 +20,7 @@ export class BackstagePasses extends GeneralItem {
       this.item.quality += 1;
     }
 
-    if (this.item.quality > 50) {
-      this.item.quality = 50;
-    }
+    this.ensureQuality();
 
     return this.item;
   }
