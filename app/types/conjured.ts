@@ -4,14 +4,12 @@ import { GeneralItem } from "@/types/general-item";
 export class Conjured extends GeneralItem {
   update() {
     this.elapseOneDay();
-    
-    this.item.quality -= 2;
 
-    if (this.item.sellIn < 0) {
-      this.item.quality -= 2;
+    this.decreaseQualityToMin(2);
+
+    if (this.isExpired()) {
+      this.decreaseQualityToMin(2);
     }
-
-    this.ensureQuality();
 
     return this;
   }

@@ -5,13 +5,11 @@ export class AgedBrie extends GeneralItem implements IGildedRoseItem {
   update() {
     this.elapseOneDay();
 
-    this.item.quality += 1;
+    this.increaseQualityToMax();
 
-    if (this.item.sellIn < 0) {
-      this.item.quality += 1;
+    if (this.isExpired()) {
+      this.increaseQualityToMax();
     }
-
-    this.ensureQuality();
 
     return this;
   }

@@ -3,6 +3,9 @@ import { IGildedRoseItem, Item } from "@/gilded-rose";
 export class GeneralItem implements IGildedRoseItem {
   item: Item;
 
+  static MAX_QUALITY = 50;
+  static MIN_QUALITY = 0;
+
   constructor(item: Item) {
     this.item = item;
   }
@@ -10,13 +13,11 @@ export class GeneralItem implements IGildedRoseItem {
   update() {
     this.elapseOneDay();
 
-    this.item.quality -= 1;
+    this.decreaseQualityToMin();
 
     if (this.item.sellIn < 0) {
-      this.item.quality -= 1;
+      this.decreaseQualityToMin();
     }
-
-    this.ensureQuality();
 
     return this;
   }
@@ -25,16 +26,20 @@ export class GeneralItem implements IGildedRoseItem {
     this.item.sellIn -= 1;
   }
 
-  ensureQuality() {
-    if(this.item.quality < 0) {
-      this.item.quality = 0;
-      return this.item
-    }
+  isExpired() {
+    return this.item.sellIn < 0;
+  }
 
-    if(this.item.quality > 50) {
-      this.item.quality = 50;
+  increaseQualityToMax(factor = 1) {
+    if (this.item.quality < GeneralItem.MAX_QUALITY) {
+      this.item.quality += factor;
     }
-
     return this;
+  }
+
+  decreaseQualityToMin(factor = 1) {
+    if (this.item.quality > GeneralItem.MIN_QUALITY) {
+      this.item.quality -= factor;
+    }
   }
 }

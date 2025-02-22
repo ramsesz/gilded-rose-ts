@@ -5,22 +5,20 @@ export class BackstagePasses extends GeneralItem implements IGildedRoseItem {
   update() {
     this.elapseOneDay();
 
-    if (this.item.sellIn < 0) {
+    if (this.isExpired()) {
       this.item.quality = 0;
       return this;
     }
 
-    this.item.quality += 1;
+    this.increaseQualityToMax();
 
     if (this.item.sellIn < 10) {
-      this.item.quality += 1;
+      this.increaseQualityToMax();
     }
 
     if (this.item.sellIn < 5) {
-      this.item.quality += 1;
+      this.increaseQualityToMax();
     }
-
-    this.ensureQuality();
 
     return this;
   }
