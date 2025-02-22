@@ -1,4 +1,5 @@
-import { IGildedRoseItem, Item } from "@/gilded-rose";
+import { IGildedRoseItem } from "@/gilded-rose";
+import { Item } from "@/types/item";
 
 export class GeneralItem implements IGildedRoseItem {
   item: Item;

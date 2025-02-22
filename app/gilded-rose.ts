@@ -2,19 +2,8 @@ import { AgedBrie } from "@/types/aged-brie";
 import { BackstagePasses } from "@/types/backstage-passes";
 import { Conjured } from "@/types/conjured";
 import { GeneralItem } from "@/types/general-item";
+import { Item } from "@/types/item";
 import { Sulfuras } from "@/types/sulfuras";
-
-export class Item {
-  name: string;
-  sellIn: number;
-  quality: number;
-
-  constructor(name, sellIn, quality) {
-    this.name = name;
-    this.sellIn = sellIn;
-    this.quality = quality;
-  }
-}
 
 export const ITEM_NAMES = {
   AGED_BRIE: "Aged Brie",
