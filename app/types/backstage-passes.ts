@@ -1,7 +1,7 @@
-import { Item } from "@/gilded-rose";
+import { IGildedRoseItem } from "@/gilded-rose";
 import { GeneralItem } from "@/types/general-item";
 
-export class BackstagePasses extends GeneralItem {
+export class BackstagePasses extends GeneralItem implements IGildedRoseItem {
   update() {
     this.item.sellIn -= 1;
 

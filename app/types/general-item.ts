@@ -1,6 +1,6 @@
-import { Item } from "@/gilded-rose";
+import { IGildedRoseItem, Item } from "@/gilded-rose";
 
-export class GeneralItem {
+export class GeneralItem implements IGildedRoseItem {
   item: Item;
 
   constructor(item: Item) {

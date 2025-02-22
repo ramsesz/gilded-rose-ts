@@ -1,7 +1,7 @@
-import { Item } from "@/gilded-rose";
+import { IGildedRoseItem } from "@/gilded-rose";
 import { GeneralItem } from "@/types/general-item";
 
-export class AgedBrie extends GeneralItem {
+export class AgedBrie extends GeneralItem implements IGildedRoseItem {
   update() {
     this.item.sellIn -= 1;
     this.item.quality += 1;
