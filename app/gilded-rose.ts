@@ -21,7 +21,19 @@ export const ITEM_NAMES = {
   SULFURAS: "Sulfuras, Hand of Ragnaros",
 };
 
+const ITEM_CLASS_BY_NAME = {
+  [ITEM_NAMES.AGED_BRIE]: AgedBrie,
+  [ITEM_NAMES.BACKSTAGE_PASSES]: BackstagePasses,
+  [ITEM_NAMES.SULFURAS]: Sulfuras,
+};
+
+export interface IGildedRoseItem {
+  item: Item;
+  update: () => Item;
+}
+
 export class GildedRose {
+  //TODO: Check if I can change Item type here
   items: Array<Item>;
 
   constructor(items = [] as Array<Item>) {
@@ -29,23 +41,19 @@ export class GildedRose {
   }
 
   updateQuality() {
-    this.items.forEach((item) => {
-      switch (item.name) {
-        case ITEM_NAMES.AGED_BRIE:
-          new AgedBrie(item).update();
-          return;
-        case ITEM_NAMES.BACKSTAGE_PASSES:
-          new BackstagePasses(item).update();
-          return;
-        case ITEM_NAMES.SULFURAS:
-          new Sulfuras(item).update();
-          return;
-        default:
-          new GeneralItem(item).update();
-          return;
-      }
+    //TODO: This could be move to constructor if items property type is allowed to change
+    const items: Array<IGildedRoseItem> = this.items.map(
+      (item) => new (this.classFrom(item.name))(item)
+    );
+
+    items.forEach((item) => {
+      item.update();
     });
 
     return this.items;
+  }
+
+  classFrom(name: string) {
+    return ITEM_CLASS_BY_NAME[name] || GeneralItem;
   }
 }
