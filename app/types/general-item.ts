@@ -17,7 +17,7 @@ export class GeneralItem implements IGildedRoseItem {
 
     this.ensureQuality();
 
-    return this.item;
+    return this;
   }
 
   ensureQuality() {
@@ -30,6 +30,6 @@ export class GeneralItem implements IGildedRoseItem {
       this.item.quality = 50;
     }
 
-    return this.item;
+    return this;
   }
 }
