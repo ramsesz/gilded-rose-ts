@@ -12,6 +12,6 @@ export class AgedBrie extends GeneralItem implements IGildedRoseItem {
     
     this.ensureQuality();
 
-    return this.item;
+    return this;
   }
 }

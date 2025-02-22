@@ -7,7 +7,7 @@ export class BackstagePasses extends GeneralItem implements IGildedRoseItem {
 
     if (this.item.sellIn < 0) {
       this.item.quality = 0;
-      return this.item;
+      return this;
     }
 
     this.item.quality += 1;
@@ -22,6 +22,6 @@ export class BackstagePasses extends GeneralItem implements IGildedRoseItem {
 
     this.ensureQuality();
 
-    return this.item;
+    return this;
   }
 }

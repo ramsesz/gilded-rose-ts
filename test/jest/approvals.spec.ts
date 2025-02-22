@@ -41,7 +41,7 @@ describe('Gilded Rose Approval', () => {
     const gildedRose = new GildedRose([new Item('foo', 0, 0)]);
     const items = gildedRose.updateQuality();
   
-    expect(items).toMatchSnapshot();
+    expect(gildedRose.items).toMatchSnapshot();
   });
 
   it('should thirtyDays', () => {

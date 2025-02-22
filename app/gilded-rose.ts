@@ -29,7 +29,7 @@ const ITEM_CLASS_BY_NAME = {
 
 export interface IGildedRoseItem {
   item: Item;
-  update: () => Item;
+  update: () => IGildedRoseItem;
 }
 
 export class GildedRose {
@@ -50,7 +50,7 @@ export class GildedRose {
       item.update();
     });
 
-    return this.items;
+    return this;
   }
 
   classFrom(name: string) {
