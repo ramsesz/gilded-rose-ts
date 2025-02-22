@@ -8,7 +8,8 @@ export class GeneralItem implements IGildedRoseItem {
   }
 
   update() {
-    this.item.sellIn -= 1;
+    this.elapseOneDay();
+
     this.item.quality -= 1;
 
     if (this.item.sellIn < 0) {
@@ -18,6 +19,10 @@ export class GeneralItem implements IGildedRoseItem {
     this.ensureQuality();
 
     return this;
+  }
+
+  elapseOneDay() {
+    this.item.sellIn -= 1;
   }
 
   ensureQuality() {

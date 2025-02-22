@@ -3,7 +3,8 @@ import { GeneralItem } from "@/types/general-item";
 
 export class Conjured extends GeneralItem {
   update() {
-    this.item.sellIn -= 1;
+    this.elapseOneDay();
+    
     this.item.quality -= 2;
 
     if (this.item.sellIn < 0) {
