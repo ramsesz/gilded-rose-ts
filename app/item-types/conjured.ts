@@ -1,5 +1,5 @@
 import { IGildedRoseItem } from "@/gilded-rose";
-import { GeneralItem } from "@/types/general-item";
+import { GeneralItem } from "@/item-types/general-item";
 
 export class Conjured extends GeneralItem {
   update() {

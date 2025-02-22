@@ -1,9 +1,9 @@
-import { AgedBrie } from "@/types/aged-brie";
-import { BackstagePasses } from "@/types/backstage-passes";
-import { Conjured } from "@/types/conjured";
-import { GeneralItem } from "@/types/general-item";
-import { Item } from "@/types/item";
-import { Sulfuras } from "@/types/sulfuras";
+import { AgedBrie } from "@/item-types/aged-brie";
+import { BackstagePasses } from "@/item-types/backstage-passes";
+import { Conjured } from "@/item-types/conjured";
+import { GeneralItem } from "@/item-types/general-item";
+import { Item } from "@/item-types/item";
+import { Sulfuras } from "@/item-types/sulfuras";
 
 export const ITEM_NAMES = {
   AGED_BRIE: "Aged Brie",
