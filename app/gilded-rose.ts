@@ -7,9 +7,9 @@ import { Sulfuras } from "@/types/sulfuras";
 
 export const ITEM_NAMES = {
   AGED_BRIE: "Aged Brie",
-  BACKSTAGE_PASSES: "Backstage passes to a TAFKAL80ETC concert",
-  CONJURED: "Conjured Mana Cake",
-  SULFURAS: "Sulfuras, Hand of Ragnaros",
+  BACKSTAGE_PASSES: "Backstage passes",
+  CONJURED: "Conjured",
+  SULFURAS: "Sulfuras",
 };
 
 const ITEM_CLASS_BY_NAME = {
@@ -45,7 +45,15 @@ export class GildedRose {
     return this;
   }
 
-  classFrom(name: string) {
-    return ITEM_CLASS_BY_NAME[name] || GeneralItem;
+  private classFrom(name: string) {
+    const classNameMatch = Object.keys(ITEM_CLASS_BY_NAME).find(
+      (startsWithMatch) => name.startsWith(startsWithMatch)
+    );
+
+    if(!classNameMatch) {
+      return GeneralItem;
+    }
+    
+    return ITEM_CLASS_BY_NAME[classNameMatch];
   }
 }
