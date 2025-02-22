@@ -132,3 +132,25 @@ describe("sulfuras quality rules", () => {
     expect(added.sellIn).toEqual(1);
   });
 });
+
+describe("conjured item quality rules", () => {
+  it("hould update quality 2x as fast as general items for sellIn > 0 days", () => {
+    const gildedRose = new GildedRose([
+      new Item(ITEM_NAMES.CONJURED, 1, 4),
+    ]);
+    gildedRose.updateQuality();
+    const added = gildedRose.items[0];
+    expect(added.quality).toEqual(2);
+    expect(added.sellIn).toEqual(0);
+  });
+
+  it("should update quality 4x as fast as general items for sellIn < 0 days", () => {
+    const gildedRose = new GildedRose([
+      new Item(ITEM_NAMES.CONJURED, 0, 8),
+    ]);
+    gildedRose.updateQuality();
+    const added = gildedRose.items[0];
+    expect(added.quality).toEqual(4);
+    expect(added.sellIn).toEqual(-1);
+  });
+});

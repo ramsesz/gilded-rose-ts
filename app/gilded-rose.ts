@@ -1,7 +1,8 @@
 import { AgedBrie } from "@/types/aged-brie";
 import { BackstagePasses } from "@/types/backstage-passes";
-import { Sulfuras } from "@/types/sulfuras";
+import { Conjured } from "@/types/conjured";
 import { GeneralItem } from "@/types/general-item";
+import { Sulfuras } from "@/types/sulfuras";
 
 export class Item {
   name: string;
@@ -18,12 +19,14 @@ export class Item {
 export const ITEM_NAMES = {
   AGED_BRIE: "Aged Brie",
   BACKSTAGE_PASSES: "Backstage passes to a TAFKAL80ETC concert",
+  CONJURED: "Conjured Mana Cake",
   SULFURAS: "Sulfuras, Hand of Ragnaros",
 };
 
 const ITEM_CLASS_BY_NAME = {
   [ITEM_NAMES.AGED_BRIE]: AgedBrie,
   [ITEM_NAMES.BACKSTAGE_PASSES]: BackstagePasses,
+  [ITEM_NAMES.CONJURED]: Conjured,
   [ITEM_NAMES.SULFURAS]: Sulfuras,
 };
 
